@@ -5,8 +5,18 @@ exports.seed = function (knex) {
     .then(function () {
       // Inserts seed entries
       return knex("users").insert([
-        { id: 1, username: "admin", password: "admin", dept: "tech" },
-        { id: 2, username: "test", password: "test", dept: "mktg" },
+        {
+          id: 1,
+          username: "admin",
+          password: "$2a$10$kKKkaXRjfuhMjmmqMSXFMOTdkjlJZGWnCCRE.soDQDpi7YLy6lZdK",
+          dept: "tech",
+        },
+        {
+          id: 2,
+          username: "test",
+          password: "$2a$10$vva0rrvgL6zQJtENjuCbLOu8eYpnKOTYg/6jZDbO7sUzDuq8ITifO",
+          dept: "mktg",
+        },
       ]);
     });
 };
