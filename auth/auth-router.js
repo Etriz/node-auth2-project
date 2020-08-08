@@ -1,8 +1,8 @@
 const express = require("express");
-const db = require("../users/users-model");
 const bcrypt = require("bcryptjs");
-// const session = require("express-session");
 const jwt = require("jsonwebtoken");
+
+const db = require("../users/users-model");
 const secrets = require("../config/secrets");
 
 const router = express.Router();
@@ -15,7 +15,7 @@ router.post("/register", async (req, res) => {
 
   try {
     const saved = await db.add(user);
-    res.status(200).json(saved);
+    res.status(201).json(saved);
   } catch (error) {
     console.log(error);
     res.status(500).json(error);
@@ -51,20 +51,6 @@ function generateToken(user) {
   return jwt.sign(payload, secret, options);
 }
 
-router.get("/logout", (req, res) => {
-  if (req.session) {
-    req.session.destroy((err) => {
-      if (err) {
-        res.send("logout session error");
-      } else {
-        {
-          res.send("logout success");
-        }
-      }
-    });
-  } else {
-    res.end();
-  }
-});
+router.get("/logout", (req, res) => {});
 
 module.exports = router;
